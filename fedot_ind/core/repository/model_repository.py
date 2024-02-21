@@ -134,6 +134,7 @@ class AtomizedModel(Enum):
     }
     INDUSTRIAL_PREPROC_MODEL = {
         # data projection onto different basis
+        'cat_features': DummyOperation,
         'eigen_basis': EigenBasisImplementation,
         'wavelet_basis': WaveletBasisImplementation,
         'fourier_basis': FourierBasisImplementation,

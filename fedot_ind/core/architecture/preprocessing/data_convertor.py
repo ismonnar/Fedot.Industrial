@@ -524,7 +524,7 @@ class DataConverter(TensorConverter, NumpyConverter):
         elif len(features.shape) == 1:
             features = features.reshape(1, 1, -1)
         elif len(features.shape) == 3 and features.shape[1] == 1:
-            features = features.squeeze()
+            features = features.squeeze(axis=1)
         return features
 
     def convert_to_eigen_basis(self):
