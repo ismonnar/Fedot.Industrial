@@ -13,9 +13,9 @@ from fedot.core.operations.evaluation.operation_implementations.data_operations.
     LinearClassFSImplementation, NonLinearClassFSImplementation
 from fedot.core.operations.evaluation.operation_implementations.data_operations.sklearn_transformations import \
     *
-from fedot.core.operations.evaluation.operation_implementations. \
-    data_operations.topological.fast_topological_extractor import \
-    FastTopologicalFeaturesImplementation
+from fedot.core.operations.evaluation.operation_implementations.data_operations.topological.fast_topological_extractor import \
+    TopologicalFeaturesImplementation
+
 from fedot.core.operations.evaluation.operation_implementations.data_operations.ts_transformations import \
     ExogDataTransformationImplementation, GaussianFilterImplementation, LaggedTransformationImplementation, \
     SparseLaggedTransformationImplementation, TsSmoothingImplementation
@@ -129,7 +129,7 @@ class AtomizedModel(Enum):
         # dimension reduction
         'kernel_pca': KernelPCAImplementation,
         # feature generation
-        'topological_features': FastTopologicalFeaturesImplementation,
+        'topological_features': TopologicalFeaturesImplementation,
 
     }
     INDUSTRIAL_PREPROC_MODEL = {
@@ -226,8 +226,8 @@ def default_industrial_availiable_operation(problem: str = 'regression'):
                               'treg',
                               'knnreg',
                               'dtreg'
-    ],
-        'classification': [
+                          ],
+                          'classification': [
                               'isolation_forest_reg',
                               'tst_model',
                               'resnet_model',
@@ -238,7 +238,7 @@ def default_industrial_availiable_operation(problem: str = 'regression'):
                               'signal_extractor',
                               'knnreg',
                               'recurrence_extractor'
-    ]}
+                          ]}
     available_operations = [
         x for x in available_operations if x not in excluded_operation[problem]]
     return available_operations
