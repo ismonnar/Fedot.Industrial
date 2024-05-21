@@ -3,7 +3,7 @@ from fedot_ind.core.architecture.postprocessing.results_picker import ResultsPic
 from benchmark.abstract_bench import AbstractBenchmark
 from fedot_ind.core.metrics.metrics_implementation import RMSE
 from fedot_ind.api.utils.path_lib import PROJECT_PATH
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot.core.pipelines.pipeline import Pipeline
 from fedot.core.pipelines.node import PipelineNode
 import pandas as pd
@@ -103,7 +103,7 @@ class BenchmarkTSER(AbstractBenchmark, ABC):
             del experiment_setup['tuning_params']
         else:
             tuning_params = None
-        model = FedotIndustrial(**experiment_setup)
+        model = Framework(**experiment_setup)
         model.load(path=composed_model_path)
 
         model.finetune(train_data, tuning_params)
@@ -117,7 +117,7 @@ class BenchmarkTSER(AbstractBenchmark, ABC):
             experiment_setup = deepcopy(self.experiment_setup)
             experiment_setup['output_folder'] = composed_model_path
             del experiment_setup['industrial_preprocessing']
-            model = FedotIndustrial(**experiment_setup)
+            model = Framework(**experiment_setup)
             model.load(path=composed_model_path)
             batch_pipelines = [automl_branch.fitted_operation.model.current_pipeline
                                for automl_branch in model.current_pipeline.nodes if automl_branch.name == 'fedot_regr']

@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from matplotlib import get_backend, pyplot as plt
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.tools.synthetic.ts_datasets_generator import TimeSeriesDatasetsGenerator
 
 
@@ -46,12 +46,12 @@ def multivariate_regression_data():
 
 @pytest.fixture
 def fedot_industrial_classification():
-    return FedotIndustrial(problem='classification', timeout=0.1)
+    return Framework(problem='classification', timeout=0.1)
 
 
 @pytest.fixture
 def fedot_industrial_regression():
-    return FedotIndustrial(problem='regression', timeout=0.1)
+    return Framework(problem='regression', timeout=0.1)
 
 
 def test_fit_predict_classification_multi(fedot_industrial_classification):

@@ -3,7 +3,7 @@ import itertools
 import numpy as np
 import pytest
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.tools.loader import DataLoader
 
 
@@ -29,10 +29,10 @@ def uni_data():
 def strategy_tsc_test(data, strategy):
     train_data, test_data = data
 
-    industrial = FedotIndustrial(task='classification',
-                                 timeout=2,
-                                 n_jobs=-1,
-                                 industrial_strategy=strategy)
+    industrial = Framework(task='classification',
+                           timeout=2,
+                           n_jobs=-1,
+                           industrial_strategy=strategy)
 
     industrial.fit(train_data)
     labels = industrial.predict(test_data)

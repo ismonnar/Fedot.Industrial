@@ -11,7 +11,7 @@ from examples.example_utils import init_input_data, calculate_regression_metric
 from fedot.core.pipelines.tuning.tuner_builder import TunerBuilder
 from fedot.core.repository.metrics_repository import RegressionMetricsEnum
 from golem.core.tuning.simultaneous import SimultaneousTuner
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 
 
 def evaluate_industrial_model(input_data,
@@ -59,7 +59,7 @@ def evaluate_automl(experiment_setup, train_data, test_data, runs=5):
         ind_preproc = True
 
     for run in range(runs):
-        model = FedotIndustrial(**experiment_setup)
+        model = Framework(**experiment_setup)
         model.preprocessing = ind_preproc
         model.fit(train_data)
         prediction = model.predict(test_data)

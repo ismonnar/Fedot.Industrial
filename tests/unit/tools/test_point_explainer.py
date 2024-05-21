@@ -4,7 +4,7 @@ import warnings
 import pytest
 from matplotlib import get_backend, pyplot as plt
 
-from fedot_ind.api.main import FedotIndustrial as FI
+from fedot_ind.api.main import Framework as FI
 from fedot_ind.tools.explain.distances import DistanceTypes
 from fedot_ind.tools.explain.explain import PointExplainer
 from fedot_ind.tools.synthetic.ts_datasets_generator import TimeSeriesDatasetsGenerator

@@ -5,7 +5,7 @@ from typing import Union
 import pandas as pd
 from sklearn.metrics import f1_score, roc_auc_score
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.api.utils.path_lib import PROJECT_PATH
 from fedot_ind.core.architecture.settings.computational import backend_methods as np
 from fedot_ind.core.metrics.metrics_implementation import calculate_forecasting_metric
@@ -53,7 +53,7 @@ def industrial_forecasting_modelling_loop(dataset_name: str = None,
                                           horizon: int = 1,
                                           finetune: bool = False,
                                           api_config: dict = None):
-    industrial = FedotIndustrial(**api_config)
+    industrial = Framework(**api_config)
     train_data, _ = DataLoader(
         dataset_name=dataset_name).load_forecast_data(folder=benchmark)
     target = train_data.values[-horizon:].flatten()
@@ -96,7 +96,7 @@ def industrial_common_modelling_loop(
             'r2',
             'rmse',
             'mae')):
-    industrial = FedotIndustrial(**api_config)
+    industrial = Framework(**api_config)
     if api_config['problem'] == 'ts_forecasting':
         train_data, _ = DataLoader(
             dataset_name=dataset_name['dataset']).load_forecast_data(

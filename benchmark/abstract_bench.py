@@ -4,7 +4,7 @@ import os
 import matplotlib
 from matplotlib import pyplot as plt
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.tools.loader import DataLoader
 
 
@@ -61,7 +61,7 @@ class AbstractBenchmark(object):
             f'/{dataset}'
         experiment_setup['history_dir'] = './composition_results' + \
             f'/{dataset}'
-        model = FedotIndustrial(**experiment_setup)
+        model = Framework(**experiment_setup)
         model.fit(train_data)
         prediction = model.predict(test_data)
         model.save_best_model()
@@ -75,7 +75,7 @@ class AbstractBenchmark(object):
 
     def finetune_loop(self, dataset, experiment_setup, composed_model_path):
         train_data, test_data = DataLoader(dataset_name=dataset).load_data()
-        model = FedotIndustrial(**experiment_setup)
+        model = Framework(**experiment_setup)
         model.load(path=composed_model_path)
         model.finetune(train_data)
         prediction = model.predict(test_data)

@@ -4,7 +4,7 @@ from fedot_ind.core.architecture.settings.computational import backend_methods a
 import pytest
 from fedot.api.main import Fedot
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 
 
 def convert_anomalies_dict_to_points(
@@ -94,16 +94,16 @@ def test_anomaly_detection(dimension):
 
     point_test = convert_anomalies_dict_to_points(series_test, anomaly_test)
 
-    industrial = FedotIndustrial(task='anomaly_detection',
-                                 dataset='custom_dataset',
-                                 strategy='fedot_preset',
-                                 branch_nodes=['eigen_basis'],
-                                 tuning_timeout=2,
-                                 tuning_iterations=2,
-                                 use_cache=False,
-                                 timeout=1,
-                                 n_jobs=-1,
-                                 logging_level=20)
+    industrial = Framework(task='anomaly_detection',
+                           dataset='custom_dataset',
+                           strategy='fedot_preset',
+                           branch_nodes=['eigen_basis'],
+                           tuning_timeout=2,
+                           tuning_iterations=2,
+                           use_cache=False,
+                           timeout=1,
+                           n_jobs=-1,
+                           logging_level=20)
 
     model = industrial.fit(features=series_train,
                            anomaly_dict=anomaly_train)

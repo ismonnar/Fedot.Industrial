@@ -4,7 +4,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.api.utils.data import init_input_data
 from fedot_ind.tools.loader import DataLoader
 
@@ -38,11 +38,11 @@ class SklearnCompatibleClassifier(BaseEstimator, ClassifierMixin):
 
 if __name__ == "__main__":
     dataset_name = 'Libras'
-    industrial = FedotIndustrial(problem='classification',
-                                 metric='f1',
-                                 timeout=2,
-                                 n_jobs=2,
-                                 logging_level=20)
+    industrial = Framework(problem='classification',
+                           metric='f1',
+                           timeout=2,
+                           n_jobs=2,
+                           logging_level=20)
 
     train_data, test_data = DataLoader(dataset_name=dataset_name).load_data()
     X_train, X_val, y_train, y_val = train_test_split(

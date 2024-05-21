@@ -35,21 +35,21 @@ from fedot_ind.tools.synthetic.ts_generator import TimeSeriesGenerator
 warnings.filterwarnings("ignore")
 
 
-class FedotIndustrial(Fedot):
-    """This class is used to run Fedot in industrial mode as FedotIndustrial.
+class Framework(Fedot):
+    """This class is used to run Fedot in industrial mode as Framework.
 
     Args:
         input_config: dictionary with the parameters of the experiment.
         output_folder: path to the folder where the results will be saved.
 
     Example:
-        First, configure experiment and instantiate FedotIndustrial class::
+        First, configure experiment and instantiate Framework class::
 
-            from fedot_ind.api.main import FedotIndustrial
+            from fedot_ind.api.main import Framework
             from fedot_ind.tools.loader import DataLoader
 
 
-            industrial = FedotIndustrial(problem='ts_classification',
+            industrial = Framework(problem='ts_classification',
                                          use_cache=False,
                                          timeout=15,
                                          n_jobs=2,
@@ -111,7 +111,7 @@ class FedotIndustrial(Fedot):
         super(Fedot, self).__init__()
 
         # init hidden state variables
-        self.logger = logging.getLogger('FedotIndustrialAPI')
+        self.logger = logging.getLogger('FrameworkAPI')
         self.solver = None
         self.predicted_labels = None
         self.predicted_probs = None

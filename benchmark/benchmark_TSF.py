@@ -10,7 +10,7 @@ from fedot.core.repository.tasks import TsForecastingParams
 from matplotlib import pyplot as plt
 
 from benchmark.abstract_bench import AbstractBenchmark
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.api.utils.path_lib import PROJECT_PATH
 from fedot_ind.core.architecture.postprocessing.results_picker import ResultsPicker
 from fedot_ind.core.architecture.settings.computational import backend_methods as np
@@ -59,7 +59,7 @@ class BenchmarkTSF(AbstractBenchmark, ABC):
                                  .forecast_length:, :].values.ravel()
         train_data = train_data.iloc[:-
                                      experiment_setup['task_params'].forecast_length, :]
-        model = FedotIndustrial(**experiment_setup)
+        model = Framework(**experiment_setup)
         model.fit(train_data)
         prediction = model.predict(train_data)
         plt.close('all')

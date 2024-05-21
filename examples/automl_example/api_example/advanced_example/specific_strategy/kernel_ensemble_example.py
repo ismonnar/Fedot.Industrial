@@ -1,4 +1,4 @@
-from fedot_ind.api.main import FedotIndustrial
+from fedot_ind.api.main import Framework
 from fedot_ind.tools.loader import DataLoader
 
 dataset_name = 'Lightning7'
@@ -12,7 +12,7 @@ api_config = dict(problem='classification',
                   industrial_strategy_params={},
                   logging_level=20)
 train_data, test_data = DataLoader(dataset_name).load_data()
-industrial = FedotIndustrial(**api_config)
+industrial = Framework(**api_config)
 industrial.fit(train_data)
 predict = industrial.predict(test_data, 'ensemble')
 predict_proba = industrial.predict_proba(test_data, 'ensemble')
